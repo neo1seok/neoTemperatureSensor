@@ -1,5 +1,5 @@
-#ifndef _DFROBOTHIGHTEMPERATURESENSOR_H
-#define _DFROBOTHIGHTEMPERATURESENSOR_H
+#ifndef _NeoDFRobotHighTemperatureSensorSENSOR_H
+#define _NeoDFRobotHighTemperatureSensorSENSOR_H
 #include<Arduino.h>
 static const float PT100Tab[] PROGMEM =
 {
@@ -44,7 +44,7 @@ static const float PT100Tab[] PROGMEM =
     , 240.18, 240.52, 240.87, 241.22, 241.56, 241.91, 242.26, 242.6, 242.95, 243.29
     , 243.64, 243.99, 244.33, 244.68, 245.02, 245.37, 245.71, 246.06, 246.4, 246.75
 };
-class DFRobotHighTemperature
+class NeoDFRobotHighTemperatureSensor
 {
 private:
     int comp(float pt, int i); //Which number is closer on the two adjacent numbers.
@@ -54,10 +54,10 @@ private:
 	float _cur_res;
 	int _cur_value;
 public:
-    DFRobotHighTemperature();          //Constructor
-    DFRobotHighTemperature(float v);	//Constructor
-	DFRobotHighTemperature(float v,int idcbitno);	//Constructor
-    ~DFRobotHighTemperature();			//Destructor
+    NeoDFRobotHighTemperatureSensor();          //Constructor
+    NeoDFRobotHighTemperatureSensor(float v);	//Constructor
+	NeoDFRobotHighTemperatureSensor(float v,int idcbitno);	//Constructor
+    ~NeoDFRobotHighTemperatureSensor();			//Destructor
     int readTemperature(int PIN);		//Get temperature
 	float get_max_value(){ return _max_value;}
 	float get_voltageRef(){ return _voltageRef;}

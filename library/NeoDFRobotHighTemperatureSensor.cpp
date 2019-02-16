@@ -1,5 +1,5 @@
 /*
-  DFRobotHighTemperatureSensor.cpp - DFRobotHighTemperatureSensor library
+  NeoDFRobotHighTemperatureSensorSensor.cpp - NeoDFRobotHighTemperatureSensorSensor library
   Developed by Bernie - 2016/1/13
 
   This library is free software; you can redistribute it and/or
@@ -20,20 +20,20 @@ Version 1.0: 13 Jan 2016 by bernie
 - Made accessors inline in the header so they can be optimized away
 */
 //#include <cmath>
-#include "DFRobotHighTemperatureSensor.h"
-DFRobotHighTemperature::DFRobotHighTemperature()  //Constructor,Default reference voltage 5.000V
-: DFRobotHighTemperature(5.0,10)
+#include "NeoDFRobotHighTemperatureSensor.h"
+NeoDFRobotHighTemperatureSensor::NeoDFRobotHighTemperatureSensor()  //Constructor,Default reference voltage 5.000V
+: NeoDFRobotHighTemperatureSensor(5.0,10)
 {
 	
 	
 }
 
-DFRobotHighTemperature::DFRobotHighTemperature(float v)  //Constructor
-: DFRobotHighTemperature(v,10)
+NeoDFRobotHighTemperatureSensor::NeoDFRobotHighTemperatureSensor(float v)  //Constructor
+: NeoDFRobotHighTemperatureSensor(v,10)
 {
 	
 }
-DFRobotHighTemperature::DFRobotHighTemperature(float v,int idcbitno){
+NeoDFRobotHighTemperatureSensor::NeoDFRobotHighTemperatureSensor(float v,int idcbitno){
 	_voltageRef = v;
 	_max_value = 1<<idcbitno;;
 	_cur_voltage=0;
@@ -41,11 +41,11 @@ DFRobotHighTemperature::DFRobotHighTemperature(float v,int idcbitno){
 	_cur_res=0;
 }
 
-DFRobotHighTemperature::~DFRobotHighTemperature()		//Destructor
+NeoDFRobotHighTemperatureSensor::~NeoDFRobotHighTemperatureSensor()		//Destructor
 {
 	
 }
-int DFRobotHighTemperature::readTemperature(int PIN)     //Get temperature
+int NeoDFRobotHighTemperatureSensor::readTemperature(int PIN)     //Get temperature
 {
     int sensorValue = analogRead(PIN);
     float voltage = 0,res = 0;
@@ -86,7 +86,7 @@ int DFRobotHighTemperature::readTemperature(int PIN)     //Get temperature
         }
     return mid;
 }
-int DFRobotHighTemperature::comp(float pt, int i) //Which number is closer on the two adjacent numbers.
+int NeoDFRobotHighTemperatureSensor::comp(float pt, int i) //Which number is closer on the two adjacent numbers.
 {
     if ((pt - pgm_read_float(&PT100Tab[i])) > (pgm_read_float(&PT100Tab[i + 1]) - pgm_read_float(&PT100Tab[i])) / 2 )
         return i + 1;
